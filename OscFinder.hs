@@ -30,6 +30,26 @@ prefixParse x = (a, b)
                 3 -> "kilo"
                 6 -> "mega"
 
+colorParse :: Double -> String
+colorParse x = g ++ " " ++ h ++ " " ++ c
+        where
+        a = decomp x
+        parse = \m -> case m of
+                '0' -> "Black"
+                '1' -> "Brown"
+                '2' -> "Red"
+                '3' -> "Orange"
+                '4' -> "Yellow"
+                '5' -> "Green"
+                '6' -> "Blue"
+                '7' -> "Violet"
+                '8' -> "Gray"
+                '9' -> "White"
+        c = parse (head (show (snd a - 1)))
+        d = round (10 * (fst a))
+        [e, f] = take 2 (show d)
+        [g, h] = map parse [e, f]
+
 makeList :: (Double, Double) -> [Int] -> [Double]
 makeList range vals = if low < high then map (* low) values ++ makeList (low * 10, high) vals else []
         where
@@ -104,6 +124,7 @@ main = do
         putStrLn ("Use a capacitor of " ++ show bx ++ " " ++ by ++ "farads.")
         putStrLn ("The frequency of the resulting oscillator would be " ++ show (round resultFreq) ++ " Hz.")
         putStrLn ("This differs from the target frequency by " ++ show (round resultDiff) ++ " Hz, or " ++ take 5 (show resultErr) ++ "%.")
+        print (colorParse resultA)
         b <- getCPUTime
         let c = fromIntegral (b - a)/1000000000000
         let cx = round ((fst (decomp c)) * (fromIntegral 10^(fst (prefixParse c))))
