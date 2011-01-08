@@ -123,10 +123,6 @@ main = do
         let ay = snd (prefixParse resultA)
         let bx = round ((fst (decomp resultB)) * (fromIntegral 10 ^ fst (prefixParse resultB)))
         let by = snd (prefixParse resultB)
-        let tol = case precchoice of
-                        e24 -> " Gold."
-                        e12 -> " Silver."
-                        e6 -> " Blank."
         putStrLn ("Use a resistor of " ++ show ax ++ " " ++ ay ++ "ohms, which has a color code of: " ++ (colorParse resultA) ++ tol)
         putStrLn ("Use a capacitor of " ++ show bx ++ " " ++ by ++ "farads.")
         putStrLn ("The frequency of the resulting oscillator would be " ++ show (round resultFreq) ++ " Hz.")
