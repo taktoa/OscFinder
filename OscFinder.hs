@@ -117,7 +117,7 @@ main = do
         let resultDiff = (fst result)
         let resultFreq = freq + resultDiff
         let resultErr = (resultDiff / freq) * 100.0
-        let resultA = snd result !! 0
+        let resultA = (snd result) !! 0
         let resultB = snd result !! 1
         print resultA
         let ax = round (fst (decomp resultA) * (fromIntegral 10 ^ fst (prefixParse resultA)))
