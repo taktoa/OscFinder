@@ -45,10 +45,12 @@ colorParse x = g ++ " " ++ h ++ " " ++ c
                 '7' -> "Violet"
                 '8' -> "Gray"
                 '9' -> "White"
-        c = parse (head (show (snd a - 1)))
-        d = round (10 * fst a)
-        (e, f) = ((show d) !! 0, (show d) !! 1)
-        (g, h) = (parse e, parse f)
+        g = parse '0'
+        (h, c) = (g, g)
+        --c = parse (head (show (snd a - 1)))
+        --d = round (10 * fst a)
+        --(e, f) = ((show d) !! 0, (show d) !! 1)
+        --(g, h) = (parse e, parse f)
 
 makeList :: (Double, Double) -> [Int] -> [Double]
 makeList range vals = map (* low) values ++ makeList (low * 10, high) vals
