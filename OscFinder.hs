@@ -54,7 +54,7 @@ colorParse x = a ++ " " ++ b ++ " " ++ c
         (a, b, c) = (r, s, n)
 
 makeList :: (Double, Double) -> [Int] -> [Double]
-makeList range vals = map (* low) values ++ makeList (low * 10, high) vals
+makeList range vals = if low < high then map (* low) values ++ makeList (low * 10, high) vals else []
         where
         low = fst range
         high = snd range
