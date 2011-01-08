@@ -117,9 +117,8 @@ main = do
         let resultDiff = (fst result)
         let resultFreq = freq + resultDiff
         let resultErr = (resultDiff / freq) * 100.0
-        let resultA = (snd result) !! 0
+        let resultA = snd result !! 0
         let resultB = snd result !! 1
-        print resultA
         let ax = round (fst (decomp resultA) * (fromIntegral 10 ^ fst (prefixParse resultA)))
         let ay = snd (prefixParse resultA)
         let bx = round ((fst (decomp resultB)) * (fromIntegral 10 ^ fst (prefixParse resultB)))
@@ -128,7 +127,6 @@ main = do
         putStrLn ("Use a capacitor of " ++ show bx ++ " " ++ by ++ "farads.")
         putStrLn ("The frequency of the resulting oscillator would be " ++ show (round resultFreq) ++ " Hz.")
         putStrLn ("This differs from the target frequency by " ++ show (round resultDiff) ++ " Hz, or " ++ take 5 (show resultErr) ++ "%.")
-        print resultA
         putStrLn (colorParse resultA)
         b <- getCPUTime
         let c = fromIntegral (b - a)/1000000000000
