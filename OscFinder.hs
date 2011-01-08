@@ -123,7 +123,7 @@ main = do
         let ay = snd (prefixParse resultA)
         let bx = round ((fst (decomp resultB)) * (fromIntegral 10 ^ fst (prefixParse resultB)))
         let by = snd (prefixParse resultB)
-        let tol = case list of
+        let tol = case precchoice of
                         e24 -> " Gold."
                         e12 -> " Silver."
                         e6 -> " Blank."
