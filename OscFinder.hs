@@ -46,12 +46,12 @@ colorParse x = g ++ " " ++ h ++ " " ++ c
                 '8' -> "Gray"
                 '9' -> "White"
         c = parse (head (show (snd a - 1)))
-        d = round (10 * (fst a))
+        d = round (10 * fst a)
         [e, f] = take 2 (show d)
         [g, h] = map parse [e, f]
 
 makeList :: (Double, Double) -> [Int] -> [Double]
-makeList range vals = if low < high then map (* low) values ++ makeList (low * 10, high) vals else []
+makeList range vals = map (* low) values ++ makeList (low * 10, high) vals
         where
         low = fst range
         high = snd range
@@ -114,11 +114,11 @@ main = do
         let resultDiff = (fst result)
         let resultFreq = freq + resultDiff
         let resultErr = (resultDiff / freq) * 100.0
-        let resultA = (snd result) !! 0
-        let resultB = (snd result) !! 1
-        let ax = round ((fst (decomp resultA)) * (fromIntegral 10^(fst (prefixParse resultA))))
+        let resultA = snd result !! 0
+        let resultB = snd result !! 1
+        let ax = round (fst (decomp resultA) * (fromIntegral 10 ^ fst (prefixParse resultA)))
         let ay = snd (prefixParse resultA)
-        let bx = round ((fst (decomp resultB)) * (fromIntegral 10^(fst (prefixParse resultB))))
+        let bx = round ((fst (decomp resultB)) * (fromIntegral 10 ^ fst (prefixParse resultB)))
         let by = snd (prefixParse resultB)
         putStrLn ("Use a resistor of " ++ show ax ++ " " ++ ay ++ "ohms.")
         putStrLn ("Use a capacitor of " ++ show bx ++ " " ++ by ++ "farads.")
