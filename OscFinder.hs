@@ -89,11 +89,11 @@ main = do
         putStrLn "c) E6 (20%)"
         putStr "Enter choice here [a, b, c]: "
         precchoice <- getLine
-        let list = case precchoice of
-                        "a" -> e24
-                        "b" -> e12
-                        "c" -> e6
-                        otherwise -> []
+        let (list, tol) = case precchoice of
+                        "a" -> (e24, " Gold.")
+                        "b" -> (e12, " Silver.")
+                        "c" -> (e6, " Blank.")
+                        otherwise -> ([],"")
         if list == [] then error "Invalid answer" else return ()
         putStrLn "For the following inputs, an input of x translates to 10^x"
         putStr "Please enter a lower bound for resistors: "
