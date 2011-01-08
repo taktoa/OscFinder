@@ -129,6 +129,6 @@ main = do
         putStrLn ("This differs from the target frequency by " ++ show (round resultDiff) ++ " Hz, or " ++ take 5 (show resultErr) ++ "%.")
         b <- getCPUTime
         let c = fromIntegral (b - a)/1000000000000
-        let cx = round ((fst (decomp c)) * (fromIntegral 10^(fst (prefixParse c))))
+        let cx = round ((fst (decomp c)) * (fromIntegral 10 ^ fst (prefixParse c)))
         let cy = snd (prefixParse c)
         putStrLn ("Took: " ++ show cx ++ " " ++ cy ++ "seconds.")
