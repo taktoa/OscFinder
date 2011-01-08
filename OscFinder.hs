@@ -30,27 +30,28 @@ prefixParse x = (a, b)
                 3 -> "kilo"
                 6 -> "mega"
 
+colorParseCore :: Char -> String
+colorParseCore x = case x of
+                    '0' -> "Black"
+                    '1' -> "Brown"
+                    '2' -> "Red"
+                    '3' -> "Orange"
+                    '4' -> "Yellow"
+                    '5' -> "Green"
+                    '6' -> "Blue"
+                    '7' -> "Violet"
+                    '8' -> "Gray"
+                    '9' -> "White"
+
 colorParse :: Double -> String
-colorParse x = g ++ " " ++ h ++ " " ++ c
+colorParse x = a ++ " " ++ b ++ " " ++ c
         where
-        a = decomp x
-        parse = \m -> case m of
-                '0' -> "Black"
-                '1' -> "Brown"
-                '2' -> "Red"
-                '3' -> "Orange"
-                '4' -> "Yellow"
-                '5' -> "Green"
-                '6' -> "Blue"
-                '7' -> "Violet"
-                '8' -> "Gray"
-                '9' -> "White"
-        g = parse '0'
-        (h, c) = (g, g)
-        --c = parse (head (show (snd a - 1)))
-        --d = round (10 * fst a)
-        --(e, f) = ((show d) !! 0, (show d) !! 1)
-        --(g, h) = (parse e, parse f)
+        m = decomp x
+        n = colorParseCore (head (show (snd m - 1)))
+        o = round (10 * fst m)
+        (p, q) = ((show o) !! 0, (show o) !! 1)
+        (r, s) = (colorParseCore p, colorParseCore q)
+        (a, b, c) = (r, s, n)
 
 makeList :: (Double, Double) -> [Int] -> [Double]
 makeList range vals = map (* low) values ++ makeList (low * 10, high) vals
