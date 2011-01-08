@@ -123,11 +123,10 @@ main = do
         let ay = snd (prefixParse resultA)
         let bx = round ((fst (decomp resultB)) * (fromIntegral 10 ^ fst (prefixParse resultB)))
         let by = snd (prefixParse resultB)
-        putStrLn ("Use a resistor of " ++ show ax ++ " " ++ ay ++ "ohms.")
+        putStrLn ("Use a resistor of " ++ show ax ++ " " ++ ay ++ "ohms, which has a color code of: " ++ (colorParse resultA))
         putStrLn ("Use a capacitor of " ++ show bx ++ " " ++ by ++ "farads.")
         putStrLn ("The frequency of the resulting oscillator would be " ++ show (round resultFreq) ++ " Hz.")
         putStrLn ("This differs from the target frequency by " ++ show (round resultDiff) ++ " Hz, or " ++ take 5 (show resultErr) ++ "%.")
-        putStrLn (colorParse resultA)
         b <- getCPUTime
         let c = fromIntegral (b - a)/1000000000000
         let cx = round ((fst (decomp c)) * (fromIntegral 10^(fst (prefixParse c))))
