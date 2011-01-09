@@ -1,4 +1,3 @@
-
 import Data.Ord
 import System.IO
 import System.CPUTime
